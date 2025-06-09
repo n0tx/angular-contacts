@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from "@angular/core";
+import { RouterOutlet } from "@angular/router";
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+    selector: "app-root",
+    imports: [RouterOutlet, MatSlideToggleModule],
+    templateUrl: "./app.html",
+    styleUrl: "./app.css"
 })
 export class App {
-  protected title = 'angular-contacts';
+    protected title = "angular-contacts";
 }
