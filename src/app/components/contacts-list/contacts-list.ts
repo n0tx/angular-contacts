@@ -1,6 +1,7 @@
-import { Component, signal } from "@angular/core";
+import { Component, signal, inject, resource } from "@angular/core";
 import { Contact } from "../../model/contact";
 import { MatListModule } from "@angular/material/list";
+import { ApiService } from "../../services/api.service";
 
 @Component({
     selector: "app-contacts-list",
@@ -10,7 +11,7 @@ import { MatListModule } from "@angular/material/list";
 })
 export class ContactsList {
     contactsListMessage = signal("contacts-list works!");
-    contacts = signal<Array<Contact>>([
+    contactsHarcoded = signal<Array<Contact>>([
         {
             id: "1",
             name: "Riki",
@@ -24,4 +25,8 @@ export class ContactsList {
             phone: "2222222"
         }
     ]);
+    apiService = inject(ApiService);
+    contactsResource = resource({
+        loader: () => this.apiService.getContacts()
+    });
 }
